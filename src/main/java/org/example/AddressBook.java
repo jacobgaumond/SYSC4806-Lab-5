@@ -1,12 +1,27 @@
 package org.example;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
+import java.util.List;
 
 // Design decisions may be somewhat basic; TA said that the methods and stuff didn't really matter,
 // as this is more about using Maven tooling and stuff.
 
+@Entity
 public class AddressBook {
-    private ArrayList<BuddyInfo> buddyList = new ArrayList<BuddyInfo>();
+    @Id
+    @GeneratedValue
+    private Integer id;
+    @OneToMany
+    private List<BuddyInfo> buddyList;
+
+    public AddressBook() {
+        buddyList = new ArrayList<BuddyInfo>();
+    }
 
     public boolean addBuddy(String name, String phoneNumber) {
         BuddyInfo buddy = new BuddyInfo(name, phoneNumber);
@@ -32,7 +47,15 @@ public class AddressBook {
         return null; // Buddy not found.
     }
 
-    public ArrayList<BuddyInfo> getBuddyList() {
+    public List<BuddyInfo> getBuddyList() {
         return buddyList;
+    }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

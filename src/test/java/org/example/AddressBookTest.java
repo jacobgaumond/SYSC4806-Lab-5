@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,7 +36,7 @@ class AddressBookTest {
 
     @org.junit.jupiter.api.Test
     void getBuddyList() {
-        ArrayList<BuddyInfo> list = book.getBuddyList();
+        List<BuddyInfo> list = book.getBuddyList();
 
         BuddyInfo buddy1 = list.get(0);
         BuddyInfo buddy2 = list.get(1);
