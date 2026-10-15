@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface BuddyInfoRepository extends CrudRepository<BuddyInfo, Integer> {
+import java.util.Optional;
+
+public interface BuddyInfoRepository extends CrudRepository<BuddyInfo, Long> {
     List<BuddyInfo> findByName(String name);
 
-    BuddyInfo findById(Long id);
+    Optional<BuddyInfo> findById(Long id);
 }

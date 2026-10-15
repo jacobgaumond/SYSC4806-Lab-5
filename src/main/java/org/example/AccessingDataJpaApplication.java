@@ -40,7 +40,7 @@ public class AccessingDataJpaApplication {
             logger.info("");
 
             // fetch an individual customer by ID
-            BuddyInfo buddyInfo = repository.findById(1L);
+            BuddyInfo buddyInfo = repository.findById(1L).orElse(null);
             logger.info("BuddyInfo found with findById(1L):");
             logger.info("--------------------------------");
             logger.info(buddyInfo.toString());
