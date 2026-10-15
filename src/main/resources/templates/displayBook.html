@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Displaying AddressBook Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 th:text="|Displaying info for AddressBook with id of ${id}|"/>
+    <div th:if="${bookExists}">
+        <div th:if="${buddyList} != null">
+            <p>This AddressBook's buddies are shown in the table below:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="buddy : ${buddyList}">
+                        <td th:text="${buddy.id}"/>
+                        <td th:text="${buddy.name}"/>
+                        <td th:text="${buddy.phoneNumber}"/>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${buddyList} == null">
+            <p>This AddressBook has no buddies...</p>
+        </div>
+    </div>
+    <div th:if="!${bookExists}">
+        <p th:text="|There is no AddressBook with an id of ${id}...|"/>
+    </div>
+</body>
+</html>
