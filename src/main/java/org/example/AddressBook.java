@@ -15,7 +15,7 @@ import java.util.List;
 public class AddressBook {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     @OneToMany
     private List<BuddyInfo> buddyList;
 
@@ -51,11 +51,23 @@ public class AddressBook {
         return buddyList;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        String buddyListStr = "";
+        for (int i = 0; i < buddyList.size(); i++) {
+            buddyListStr += buddyList.get(i).toString();
+            if ((i + 1) < buddyList.size()) {
+                buddyListStr += ",";
+            }
+        }
+        return String.format("AddressBook[id=%d, buddyList=[%s]]", id, buddyListStr);
     }
 }

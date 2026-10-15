@@ -11,12 +11,12 @@ import jakarta.persistence.Id;
 public class BuddyInfo {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     private String name;
     private String phoneNumber;
 
-    public BuddyInfo() {
+    protected BuddyInfo() {
 
     }
 
@@ -33,7 +33,7 @@ public class BuddyInfo {
         return phoneNumber;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 
@@ -45,7 +45,12 @@ public class BuddyInfo {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("BuddyInfo[id=%d, name='%s', phoneNumber='%s'", id, name, phoneNumber);
     }
 }
